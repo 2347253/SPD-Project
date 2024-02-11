@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from "@react-navigation/stack";
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import AndroidLarge from "./screens/AndroidLarge";
+import Navigation from "./router/Navigation";
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const App = () => {
+
+   const [fontsLoaded, error] = useFonts({
+     "Inter-Regular": require("./assets/fonts/InterVariable.ttf"),
+   });
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+    <Navigation/>
+    </>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
